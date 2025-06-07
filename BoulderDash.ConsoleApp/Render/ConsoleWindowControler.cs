@@ -19,5 +19,7 @@ namespace BoulderDash.ConsoleApp.Render
             WindowWidth = Console.WindowWidth;
             WindowHeight = Console.WindowHeight;
         }
+
+        //public void
     }
 }

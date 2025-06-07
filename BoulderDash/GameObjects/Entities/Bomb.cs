@@ -28,13 +28,13 @@ namespace BoulderDash.Core.GameObjects.Entities
 
         private int radiusOfExplousion = 2;
 
-        public override void Action(GameWorld gameWorld, Vector2D position)
+        public override void React(GameWorld gameWorld, Vector2D position)
         {
             GameObject[,] gameMap = gameWorld.Map;
 
-            Vector2D newLeftPosition = new Vector2D(position.X - 1, position.Y);
-            Vector2D newRightPosition = new Vector2D(position.X + 1, position.Y);
-            Vector2D newDownPosition = new Vector2D(position.X, position.Y + 1);
+            Vector2D leftPos = new Vector2D(position.X - 1, position.Y);
+            Vector2D rightPos = new Vector2D(position.X + 1, position.Y);
+            Vector2D downPos = new Vector2D(position.X, position.Y + 1);
             Vector2D newLeftDownPosition = new Vector2D(position.X - 1, position.Y + 1);
             Vector2D newRightDownPosition = new Vector2D(position.X + 1, position.Y + 1);
 
@@ -49,32 +49,32 @@ namespace BoulderDash.Core.GameObjects.Entities
                 }
             }
 
-            if ((gameMap[newDownPosition.X, newDownPosition.Y].IsPassible == false &&
-               gameMap[newLeftPosition.X, newLeftPosition.Y].IsPassible == false &&
-               gameMap[newRightPosition.X, newRightPosition.Y].IsPassible == false) ||
-               (gameMap[newDownPosition.X, newDownPosition.Y] is Player))
+            if ((gameMap[downPos.X, downPos.Y].IsPassible == false &&
+               gameMap[leftPos.X, leftPos.Y].IsPassible == false &&
+               gameMap[rightPos.X, rightPos.Y].IsPassible == false) ||
+               (gameMap[downPos.X, downPos.Y] is Player))
             {
                 return;
             }
-            else if (gameMap[newDownPosition.X, newDownPosition.Y].IsPassible == true &&
-                gameMap[newDownPosition.X, newDownPosition.Y] is not Player &&
+            else if (gameMap[downPos.X, downPos.Y].IsPassible == true &&
+                gameMap[downPos.X, downPos.Y] is not Player &&
                 currentTickBeforeFalling >= maxTicksBeforeFalling)
             {
-                Fall(gameMap, position, newDownPosition);
+                Fall(gameMap, position, downPos);
                 currentTickBeforeFalling = 0;
             }
-            else if (gameMap[newDownPosition.X, newDownPosition.Y].IsPassible == true &&
-                gameMap[newDownPosition.X, newDownPosition.Y] is not Player &&
+            else if (gameMap[downPos.X, downPos.Y].IsPassible == true &&
+                gameMap[downPos.X, downPos.Y] is not Player &&
                 currentTickBeforeFalling < maxTicksBeforeFalling)
             {
                 currentTickBeforeFalling++;
             }
-            else if ((gameMap[newDownPosition.X, newDownPosition.Y].IsPassible == false &&
-                gameMap[newDownPosition.X, newDownPosition.Y] is not Player) &&
-                (gameMap[newLeftPosition.X, newLeftPosition.Y].IsPassible == true ||
-                gameMap[newRightPosition.X, newRightPosition.Y].IsPassible == true))
+            else if ((gameMap[downPos.X, downPos.Y].IsPassible == false &&
+                gameMap[downPos.X, downPos.Y] is not Player) &&
+                (gameMap[leftPos.X, leftPos.Y].IsPassible == true ||
+                gameMap[rightPos.X, rightPos.Y].IsPassible == true))
             {
-                Roll(gameMap, position, newLeftPosition, newRightPosition, newLeftDownPosition, newRightDownPosition);
+                Roll(gameMap, position, leftPos, rightPos, newLeftDownPosition, newRightDownPosition);
             }
 
         }

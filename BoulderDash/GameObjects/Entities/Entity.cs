@@ -17,7 +17,7 @@ namespace BoulderDash.Core.GameObjects.Entities
 
         public bool IsInteractionaable { get; set; } = false;
 
-        public virtual void Action(GameWorld gameWorld, Vector2D position)
+        public virtual void React(GameWorld gameWorld, Vector2D position)
         {
 
         }

@@ -1,4 +1,4 @@
-namespace BoulderDash.GUIApp
+namespace BoulderDash.GUI
 {
     public partial class Form1 : Form
     {

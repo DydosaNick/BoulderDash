@@ -8,6 +8,8 @@ namespace BoulderDash.ConsoleApp.Render
     public class ConsoleRender : GameRender
     {
         ConsoleWindowControler windowControler = new();
+
+        ConsoleTextures consoleTextures = new ConsoleTextures();
         public override void Render(GameWorld gameMap)
         {
             Console.CursorVisible = false;
@@ -25,8 +27,6 @@ namespace BoulderDash.ConsoleApp.Render
                 Console.Clear();
             }
 
-
-
             if (gameMap.PreviousMap == null)
             {
                 Console.Clear();
@@ -36,17 +36,24 @@ namespace BoulderDash.ConsoleApp.Render
             {
                 for ( int y = 0; y < gameMap.Height; y++)
                 {
-                    if (newWidth < gameMap.Width ||
-                        newHeight < gameMap.Height)
+                    // Check if the new console size is smaller than the game map size
+                    windowControler.UpdateWindowSize();
+
+                    if (windowControler.WindowWidth < gameMap.Width ||
+                        windowControler.WindowHeight < gameMap.Height)
                     {
                         Console.Clear();
                         return;
                     }
 
-                    if (gameMap.PreviousMap == null ||
-                    gameMap.PreviousMap[x, y] != gameMap.Map[x, y])
+                    if (gameMap.PreviousMap == null || gameMap.PreviousMap[x, y] != gameMap.Map[x, y])
                     {
                         Console.SetCursorPosition((x + (windowControler.WindowWidth - gameMap.Width) / 2), (y + (windowControler.WindowHeight - gameMap.Height) / 2));
+
+                        //var (color, texture) = consoleTextures.Textures[gameMap.Map[x, y].GetType()];
+
+                        //Console.ForegroundColor = color;
+                        //Console.Write(texture);
 
                         if (gameMap.Map[x, y] is Player)
                         {

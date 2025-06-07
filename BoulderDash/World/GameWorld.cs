@@ -143,7 +143,7 @@ namespace BoulderDash.Core.World
                 {
                     if(Map[x, y] is Entity entity && Map[x, y] is not Player)
                     {
-                        entity.Action(this, Map[x,y].Position);
+                        entity.React(this, Map[x,y].Position);
                     }
                     if (Map[x, y] is Exit exit)
                     {

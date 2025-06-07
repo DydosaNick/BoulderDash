@@ -20,7 +20,7 @@ namespace BoulderDash.Core.GameObjects.Entities
 
         private int currentTickBeforeFalling = 0;
 
-        public override void Action(GameWorld gameWorld, Vector2D position)
+        public override void React(GameWorld gameWorld, Vector2D position)
         {
             GameObject[,] gameMap = gameWorld.Map;
 
