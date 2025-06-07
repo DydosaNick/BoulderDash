@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoulderDash.Core", "Boulder
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoulderDash.ConsoleApp", "BoulderDash.ConsoleApp\BoulderDash.ConsoleApp.csproj", "{F5F077E0-7322-44E3-BBCE-CD15F7DD439E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoulderDash.GUI", "BoulderDash.GUI\BoulderDash.GUI.csproj", "{DDE857FA-FA40-4B2C-9162-7C37D2EC1E02}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{F5F077E0-7322-44E3-BBCE-CD15F7DD439E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5F077E0-7322-44E3-BBCE-CD15F7DD439E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5F077E0-7322-44E3-BBCE-CD15F7DD439E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DDE857FA-FA40-4B2C-9162-7C37D2EC1E02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DDE857FA-FA40-4B2C-9162-7C37D2EC1E02}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DDE857FA-FA40-4B2C-9162-7C37D2EC1E02}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DDE857FA-FA40-4B2C-9162-7C37D2EC1E02}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
