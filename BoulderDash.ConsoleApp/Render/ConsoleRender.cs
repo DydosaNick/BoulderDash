@@ -10,97 +10,65 @@ namespace BoulderDash.ConsoleApp.Render
         ConsoleWindowControler windowControler = new();
 
         ConsoleTextures consoleTextures = new ConsoleTextures();
-        public override void Render(GameWorld gameMap)
+
+        private bool isNeedToRewrite = false;
+
+        public override void Render(GameWorld gameWorld)
         {
+
+            if (gameWorld.PreviousMap == null)
+            {
+                isNeedToRewrite = true;
+                Console.Clear();
+            }
+
+            if (windowControler.HasWindowSizeChanged())
+            {
+                isNeedToRewrite = true;
+                Console.Clear();
+            }
+
+            windowControler.UpdateWindowSize();
+
+            if (windowControler.HasWindowSizeSmallerThenWorld(gameWorld))
+            {
+                isNeedToRewrite = true;
+                Console.Clear();
+                return;
+            }
+
             Console.CursorVisible = false;
 
-            int newWidth = Console.WindowWidth;
-            int newHeight = Console.WindowHeight;
-
-            if (newWidth != windowControler.WindowWidth ||
-                newHeight != windowControler.WindowHeight)
+            for (int x = 0; x < gameWorld.Width; x++)
             {
-                if (newHeight == 0 || newWidth == 0)
-                    return;
-                windowControler.UpdateWindowSize();
-                gameMap.PreviousMap = null;
-                Console.Clear();
-            }
-
-            if (gameMap.PreviousMap == null)
-            {
-                Console.Clear();
-            }
-
-            for (int x = 0; x < gameMap.Width; x++)
-            {
-                for ( int y = 0; y < gameMap.Height; y++)
+                for (int y = 0; y < gameWorld.Height; y++)
                 {
-                    // Check if the new console size is smaller than the game map size
-                    windowControler.UpdateWindowSize();
 
-                    if (windowControler.WindowWidth < gameMap.Width ||
-                        windowControler.WindowHeight < gameMap.Height)
+                    int newCursorX = x + (Console.WindowWidth - gameWorld.Width) / 2;
+                    int newCursorY = y + (Console.WindowHeight - gameWorld.Height) / 2;
+
+                    if ((newCursorX <= windowControler.WindowWidth && newCursorY <= windowControler.WindowHeight) ||
+                       gameWorld.PreviousMap == null || gameWorld.PreviousMap[x, y] != gameWorld.Map[x, y] || isNeedToRewrite)
                     {
-                        Console.Clear();
-                        return;
+                        try
+                        {
+                            Console.SetCursorPosition(newCursorX, newCursorY);
+                        }
+                        catch (ArgumentOutOfRangeException)
+                        {
+                            continue;
+                        }
+
+                        var (color, texture) = consoleTextures.Textures[gameWorld.Map[x, y].GetType()];
+
+                        Console.ForegroundColor = color;
+                        Console.Write(texture);                      
+
+                        Console.ResetColor();
                     }
-
-                    if (gameMap.PreviousMap == null || gameMap.PreviousMap[x, y] != gameMap.Map[x, y])
-                    {
-                        Console.SetCursorPosition((x + (windowControler.WindowWidth - gameMap.Width) / 2), (y + (windowControler.WindowHeight - gameMap.Height) / 2));
-
-                        //var (color, texture) = consoleTextures.Textures[gameMap.Map[x, y].GetType()];
-
-                        //Console.ForegroundColor = color;
-                        //Console.Write(texture);
-
-                        if (gameMap.Map[x, y] is Player)
-                        {
-                            Console.ForegroundColor = ConsoleColor.Green;
-                            Console.Write("@");
-                        }
-                        else if (gameMap.Map[x, y] is Rock)
-                        {
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.Write("0");
-                        }
-                        else if (gameMap.Map[x, y] is Diamond)
-                        {
-                            Console.ForegroundColor = ConsoleColor.Yellow;
-                            Console.Write("*");
-                        }
-                        else if (gameMap.Map[x, y] is Wall)
-                        {
-                            Console.ForegroundColor = ConsoleColor.Gray;
-                            Console.Write("#");
-                        }
-                        else if (gameMap.Map[x, y] is Air)
-                        {
-                            Console.ForegroundColor = ConsoleColor.White;
-                            Console.Write(" ");
-                        }
-                        else if (gameMap.Map[x, y] is Exit)
-                        {
-                            Console.ForegroundColor = ConsoleColor.Cyan;
-                            Console.Write("E");
-                        }
-                        else if (gameMap.Map[x, y] is Block)
-                        {
-                            Console.ForegroundColor = ConsoleColor.Magenta;
-                            Console.Write("X");
-                        }
-                        else if (gameMap.Map[x, y] is Bomb)
-                        {
-                            Console.ForegroundColor = ConsoleColor.DarkYellow;
-                            Console.Write("B");
-                        }
-                        else
-                            Console.ResetColor();
-                    }
-
-                    Console.ResetColor();
                 }
+
+                isNeedToRewrite = false;
             }
         }
 

@@ -1,4 +1,5 @@
-﻿using BoulderDash.Core.Utilites;
+﻿using BoulderDash.ConsoleApp.Render;
+using BoulderDash.Core.Utilites;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,32 +10,31 @@ namespace BoulderDash.ConsoleApp.Input
 {
     public class ConsoleInput : GameInput
     {
+        private Keys keys = new Keys();
+
+        private Messages messages = new Messages();
         public override Actions HandleInput()
         {
             if (!Console.KeyAvailable) return Actions.Nothing;
 
-            ConsoleKey key = Console.ReadKey(true).Key;
-            switch (key)
+            var action = keys.KeyBindings[Console.ReadKey(true).Key];
+            if (action == Actions.Nothing)
             {
-                case ConsoleKey.W: case ConsoleKey.UpArrow: return Actions.MoveUp;
-                case ConsoleKey.S: case ConsoleKey.DownArrow: return Actions.MoveDown;
-                case ConsoleKey.A: case ConsoleKey.LeftArrow: return Actions.MoveLeft; 
-                case ConsoleKey.D: case ConsoleKey.RightArrow: return Actions.MoveRight;
-                case ConsoleKey.Escape: return Actions.LeaveGame;
-                case ConsoleKey.Enter: return Actions.Interact;
+                return Actions.Nothing;
             }
-
-            return Actions.Nothing;
+            else
+            {
+                return action;
+            }
         }
             
-        public override string MenuInput()
+        public override string MenuInput(GameStates gameState)
         {
             Console.Clear();
-            Console.WriteLine("Welcome to Boulder Dash!");
-            Console.WriteLine("From wich level you want to start");
 
-            string input = Console.ReadLine();
-            return input;
+            Console.WriteLine(messages.MessagesDictionary[gameState]);
+
+            return Console.ReadLine();
         }
     }
 }

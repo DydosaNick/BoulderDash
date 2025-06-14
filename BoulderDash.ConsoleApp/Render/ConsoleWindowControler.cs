@@ -1,4 +1,5 @@
 ﻿using BoulderDash.Core.Controlers;
+using BoulderDash.Core.World;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,27 @@ namespace BoulderDash.ConsoleApp.Render
             WindowHeight = Console.WindowHeight;
         }
 
-        //public void
+        public bool HasWindowSizeChanged()
+        {
+            int newWindowWidth = Console.WindowWidth;
+            int newWindowHeight = Console.WindowHeight;
+
+            if (newWindowWidth != WindowWidth || newWindowHeight != WindowHeight)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool HasWindowSizeSmallerThenWorld(GameWorld gameWorld) 
+        {
+            if (WindowWidth < gameWorld.Width ||  WindowHeight < gameWorld.Height)
+            {
+                return true;
+            }
+            return false;
+        }
+
     }
 }

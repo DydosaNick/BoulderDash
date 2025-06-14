@@ -10,10 +10,8 @@ namespace BoulderDash.Core.Utilites
     {
         public abstract Actions HandleInput();
 
-        public virtual string MenuInput()
-        {
-            return string.Empty;
-        }
+        public abstract string MenuInput(GameStates gameStates);
+
 
     }
 }

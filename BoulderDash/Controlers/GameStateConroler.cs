@@ -28,7 +28,7 @@ namespace BoulderDash.Core.Controlers
                         CurrentGameState = GameStates.Menu;
                         break;
                     case GameStates.Menu:
-                        string tempStr = gameCore.gameInput.MenuInput();
+                        string tempStr = gameCore.gameInput.MenuInput(CurrentGameState);
                         if (int.TryParse(tempStr, out int level) && level > 0 && level <= gameWorld.MaxLevel)
                         {
                             gameWorld.CurrentLevel = level;

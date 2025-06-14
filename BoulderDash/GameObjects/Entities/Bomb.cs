@@ -1,5 +1,6 @@
 ﻿using BoulderDash.Core.GameObjects.Cells;
 using BoulderDash.Core.Utilites;
+using BoulderDash.Core.Utilites.Interfaces;
 using BoulderDash.Core.World;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BoulderDash.Core.GameObjects.Entities
 {
-    public class Bomb : Entity
+    public class Bomb : Entity, IExplode
     {
         public Bomb(int x, int y) : base(x, y)
         {
@@ -26,7 +27,7 @@ namespace BoulderDash.Core.GameObjects.Entities
 
         private int currentTickBeforeFalling = 0;
 
-        private int radiusOfExplousion = 2;
+        private readonly int radiusOfExplousion = 2;
 
         public override void React(GameWorld gameWorld, Vector2D position)
         {
@@ -44,7 +45,7 @@ namespace BoulderDash.Core.GameObjects.Entities
                 
                 if (currentTickBeforeExplosion >= maxTicksBeforeExplousion)
                 {
-                    Explode(gameMap, Position, gameWorld.Width, gameWorld.Height);
+                    Explode(gameMap, Position, gameWorld.Width, gameWorld.Height, radiusOfExplousion);
                     return;
                 }
             }
@@ -129,13 +130,14 @@ namespace BoulderDash.Core.GameObjects.Entities
                 gameMap[position.X, position.Y] = new Air(position.X, position.Y);
             }
         }
-        private void Explode(GameObject[,] gameMap, Vector2D position, int width, int height)
+
+        private void Explode(GameObject[,] gameMap, Vector2D position, int width, int height, int radiusOfExplousion)
         {
             for (int i = position.X - radiusOfExplousion; i <= position.X + radiusOfExplousion; i++)
             {
-                for (int j = position.Y - radiusOfExplousion; j <= position.Y + radiusOfExplousion ; j++)
+                for (int j = position.Y - radiusOfExplousion; j <= position.Y + radiusOfExplousion; j++)
                 {
-                    if(i >= 0 && j >= 0 && i < width && j < height)
+                    if (i >= 0 && j >= 0 && i < width && j < height)
                     {
                         if (gameMap[i, j] is not Wall)
                         {

@@ -16,9 +16,10 @@ namespace BoulderDash.Core.GameObjects
             Position = new Vector2D(x, y);
         }
 
+        public bool IsPassible { get; set; } = false;
         public bool IsPlayerPassible { get; set; } = false;
 
-        public bool IsPassible { get; set; } = false;
+        public char id { get; set; } = ' ';
 
         public Vector2D Position;
     }

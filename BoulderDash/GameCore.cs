@@ -36,7 +36,7 @@ namespace BoulderDash.Core
             gameWorld.UpdateWorld(key, playerControler, gameWorld, gameStateConroler);
             gameRender.Render(gameWorld);
             gameWorld.UpdatePreviousMap();
-            Thread.Sleep(100);
+            Thread.Sleep(80);
         }        
     }
 }
