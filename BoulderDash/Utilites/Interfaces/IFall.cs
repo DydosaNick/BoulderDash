@@ -8,7 +8,6 @@ namespace BoulderDash.Core.Utilites.Interfaces
 {
     public interface IFall
     {
-        public 
-        bool IsExploded { get; }
+
     }
 }

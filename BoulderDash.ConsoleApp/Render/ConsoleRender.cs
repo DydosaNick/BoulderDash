@@ -11,6 +11,8 @@ namespace BoulderDash.ConsoleApp.Render
 
         ConsoleTextures consoleTextures = new ConsoleTextures();
 
+        Messages messages = new Messages();
+
         private bool isNeedToRewrite = false;
 
         public override void Render(GameWorld gameWorld)
@@ -72,41 +74,15 @@ namespace BoulderDash.ConsoleApp.Render
             }
         }
 
-        public override void ShowMessage(GameStates gameStates)
+        public override void ShowMessage(GameStates gameState)
         {
             Console.Clear();
             Console.SetCursorPosition(0, 0);
-            
-            switch (gameStates)
-            {
-                case GameStates.PlayerDied:
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("You died! Press any key to continue...");
-                    break;
-                case GameStates.PlayerExitByHimself:
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("You exited the game! Press any key to continue...");
-                    break;
-                case GameStates.LevelCompleted:
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("Level completed! Press any key to continue...");
-                    break;
-                case GameStates.GameCompleted:
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine("Congratulations! You completed the game!");
-                    Console.WriteLine($"Your diamond score is {Player.DiamondScore}");
-                    break;
-                case GameStates.NoEscape:
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("You can't escape from this level. You loose! Press any key to continue...");
-                    break;
-                case GameStates.InvalidInput:
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Invalid input! Press any key to continue...");
-                    break;
-                default:
-                    return;
-            }
+
+            var (foregroundColor, message) = messages.MessagesDictionary[gameState];
+
+            Console.ForegroundColor = foregroundColor;
+            Console.WriteLine(message);
 
             Console.ResetColor();
             Console.ReadKey();

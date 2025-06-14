@@ -12,22 +12,22 @@ namespace BoulderDash.ConsoleApp.Render
     public class Messages
     {
         //Messages Dictionary
-        public Dictionary<GameStates, string> MessagesDictionary
+        public Dictionary<GameStates, (ConsoleColor, string)> MessagesDictionary
         {
             get
             {
                 {
-                    return new Dictionary<GameStates, string>()
+                    return new Dictionary<GameStates, (ConsoleColor, string)>()
                     {
-                        { GameStates.NotStarted, "Game not started yet. Press any key to start." },
-                        { GameStates.Menu, "Welcome to Boulder Dash!" },
-                        { GameStates.Playing, "Game is in progress. Good luck!" },
-                        { GameStates.PlayerDied, "You died! Press 'R' to restart or 'Q' to quit." },
-                        { GameStates.LevelCompleted, "Level completed!" },
-                        { GameStates.GameCompleted, "Congratulations! You've completed the game!" },
-                        { GameStates.PlayerExitByHimself, "You exited the game by yourself." },
-                        { GameStates.InvalidInput, "Invalid input! Please try again." },
-                        { GameStates.NoEscape, "No escape available at this moment." }
+                        { GameStates.NotStarted, (ConsoleColor.White, "Welcome to Boulder Dash! Press any key to start...") },
+                        { GameStates.Menu, (ConsoleColor.Yellow,"Welcome") },
+                        { GameStates.Playing, (ConsoleColor.Green, "Game is running...") },
+                        { GameStates.LevelCompleted, (ConsoleColor.Cyan, "Level completed! Press any key to continue...") },
+                        { GameStates.GameCompleted, (ConsoleColor.Magenta, "Congratulations! You've completed all levels!") },
+                        { GameStates.InvalidInput, (ConsoleColor.Red, "Invalid input! Please try again.") },
+                        { GameStates.PlayerDied, (ConsoleColor.Red, "You died! Press any key to continue...") },
+                        { GameStates.PlayerExitByHimself, (ConsoleColor.Cyan, "You exited the game! Press any key to continue...") },
+                        { GameStates.NoEscape, (ConsoleColor.Red, "You can't escape from this level. You lose! Press any key to continue...") }
                     };
                 }
             }

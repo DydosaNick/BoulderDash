@@ -74,7 +74,7 @@ namespace BoulderDash.Core.Controlers
             }
         }
 
-        public void CheckOrChangeGameState(Actions actions)
+        public void EvaluateGameStateActions(Actions actions)
         {
             if (!Player.IsPlayerAlive)
             {

@@ -61,7 +61,7 @@ namespace BoulderDash.Core.World
         {
             playerControler.PlayerAction(key, gameWorld, gameStateConroler);
 
-            gameStateConroler.CheckOrChangeGameState(key);
+            gameStateConroler.EvaluateGameStateActions(key);
 
             UpdateMap(gameStateConroler);
         }
