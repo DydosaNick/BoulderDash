@@ -17,14 +17,14 @@ namespace BoulderDash.ConsoleApp.Input
         {
             if (!Console.KeyAvailable) return Actions.Nothing;
 
-            var action = keys.KeyBindings[Console.ReadKey(true).Key];
-            if (action == Actions.Nothing)
+            try
+            {
+                var action = keys.KeyBindings[Console.ReadKey(true).Key];
+                return action;
+            }
+            catch (Exception)
             {
                 return Actions.Nothing;
-            }
-            else
-            {
-                return action;
             }
         }
             

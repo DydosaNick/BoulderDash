@@ -41,20 +41,21 @@ namespace BoulderDash.ConsoleApp.Render
 
             Console.CursorVisible = false;
 
+            int newCursorX = (Console.WindowWidth - gameWorld.Width) / 2;
+            int newCursorY = (Console.WindowHeight - gameWorld.Height) / 2;
+
             for (int x = 0; x < gameWorld.Width; x++)
             {
                 for (int y = 0; y < gameWorld.Height; y++)
                 {
 
-                    int newCursorX = x + (Console.WindowWidth - gameWorld.Width) / 2;
-                    int newCursorY = y + (Console.WindowHeight - gameWorld.Height) / 2;
 
                     if ((newCursorX <= windowControler.WindowWidth && newCursorY <= windowControler.WindowHeight) ||
                        gameWorld.PreviousMap == null || gameWorld.PreviousMap[x, y] != gameWorld.Map[x, y] || isNeedToRewrite)
                     {
                         try
                         {
-                            Console.SetCursorPosition(newCursorX, newCursorY);
+                            Console.SetCursorPosition(newCursorX + x, newCursorY + y);
                         }
                         catch (ArgumentOutOfRangeException)
                         {
@@ -84,6 +85,7 @@ namespace BoulderDash.ConsoleApp.Render
             Console.ForegroundColor = foregroundColor;
             Console.WriteLine(message);
 
+            Thread.Sleep(1000);
             Console.ResetColor();
             Console.ReadKey();
         }

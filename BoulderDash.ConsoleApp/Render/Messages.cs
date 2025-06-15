@@ -23,7 +23,7 @@ namespace BoulderDash.ConsoleApp.Render
                         { GameStates.Menu, (ConsoleColor.Yellow,"Welcome") },
                         { GameStates.Playing, (ConsoleColor.Green, "Game is running...") },
                         { GameStates.LevelCompleted, (ConsoleColor.Cyan, "Level completed! Press any key to continue...") },
-                        { GameStates.GameCompleted, (ConsoleColor.Magenta, "Congratulations! You've completed all levels!") },
+                        { GameStates.GameCompleted, (ConsoleColor.Magenta, $"Congratulations! You've completed all levels! Your score is: {Player.DiamondScore} ") },
                         { GameStates.InvalidInput, (ConsoleColor.Red, "Invalid input! Please try again.") },
                         { GameStates.PlayerDied, (ConsoleColor.Red, "You died! Press any key to continue...") },
                         { GameStates.PlayerExitByHimself, (ConsoleColor.Cyan, "You exited the game! Press any key to continue...") },

@@ -11,7 +11,7 @@ namespace BoulderDash.Core.Controlers
 {
     public class GameStateConroler
     {
-        private GameStates CurrentGameState { get; set; } = GameStates.NotStarted;
+        public GameStates CurrentGameState { get; set; } = GameStates.NotStarted;
 
         public void ControlGameState(GameCore gameCore)
         {
@@ -89,7 +89,7 @@ namespace BoulderDash.Core.Controlers
             }
         }
 
-        internal void ChangeGameState(GameStates gameState)
+        public void ChangeGameState(GameStates gameState)
         {
             CurrentGameState = gameState;
         }
