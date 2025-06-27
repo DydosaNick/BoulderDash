@@ -63,28 +63,6 @@ namespace BoulderDash.Core.Controlers
                     case GameStates.PlayerDied:
                     case GameStates.GameCompleted:
                     case GameStates.PlayerExitByHimself:
-                        Thread.Sleep(300);
-                        gameCore.gameRender.ShowMessage(CurrentGameState);
-                        Thread.Sleep(500);
-                        isGameRunning = false;
-                        break;
-                    default:
-                        return;
-                }
-            }
-        }
-
-        public void EvaluateGameStateActions(Actions actions)
-        {
-            if (!Player.IsPlayerAlive)
-            {
-                ChangeGameState(GameStates.PlayerDied);
-            }
-            
-            switch(actions)
-            {
-                case Actions.LeaveGame:
-                    ChangeGameState(GameStates.PlayerExitByHimself);
                     break;
             }
         }
