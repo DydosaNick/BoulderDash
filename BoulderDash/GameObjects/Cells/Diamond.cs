@@ -10,7 +10,7 @@ namespace BoulderDash.Core.GameObjects.Cells
     {
         public Diamond(int x, int y) : base(x, y)
         {
-            IsPlayerPassible = true;
+            IsPassibleByPlayer = true;
         }
 
     }

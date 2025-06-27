@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BoulderDash.Core.World.GameWorld">
+    <Position X="10.25" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAJDSAAAAAUAkABEgAAAAEAAgAUQAAAAAAAEA=</HashCode>
+      <FileName>World\GameWorld.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash.Core.Utilites.GameAudio">
+    <Position X="12.5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utilites\GameAudio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash.Core.Utilites.GameInput">
+    <Position X="12.5" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utilites\GameInput.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash.Core.Utilites.GameRender">
+    <Position X="5.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAgAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Utilites\GameRender.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash.Core.Utilites.Vector2D">
+    <Position X="12.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAA=</HashCode>
+      <FileName>Utilites\Vector2D.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash.Core.GameCore">
+    <Position X="5.75" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAQAAAAAIA4AgAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>GameCore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash.Core.Controlers.GameStateConroler">
+    <Position X="15" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAGAAAAAAAAAAQABAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Controlers\GameStateConroler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash.Core.Controlers.PlayerControler">
+    <Position X="15" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQMAAABAAAACAAIAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Controlers\PlayerControler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash.Core.GameObjects.Entities.Block">
+    <Position X="8.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Entities\Block.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash.Core.GameObjects.Entities.Bomb">
+    <Position X="4.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAACBgQAAACAAAAgAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Entities\Bomb.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash.Core.GameObjects.Entities.Entity">
+    <Position X="6.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAgCAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Entities\Entity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash.Core.GameObjects.Entities.Player">
+    <Position X="6.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAIAAAAAAAAAAAAAJAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Entities\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash.Core.GameObjects.Entities.Rock">
+    <Position X="8.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAQAAACAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Entities\Rock.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash.Core.GameObjects.Cells.Air">
+    <Position X="10.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Cells\Air.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash.Core.GameObjects.Cells.Cell">
+    <Position X="11" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Cells\Cell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash.Core.GameObjects.Cells.Diamond">
+    <Position X="12.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Cells\Diamond.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash.Core.GameObjects.Cells.Exit">
+    <Position X="13.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Cells\Exit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash.Core.GameObjects.Cells.Wall">
+    <Position X="10.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Cells\Wall.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BoulderDash.Core.GameObjects.GameObject">
+    <Position X="8.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAQAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\GameObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="BoulderDash.Core.Utilites.Actions">
+    <Position X="8" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QCEgAAAAAAAAAAAAAAAAAAAAIAAAAAAIQAAAAAAAAAA=</HashCode>
+      <FileName>Utilites\Actions.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BoulderDash.Core.Utilites.GameStates">
+    <Position X="8" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAGAAAAAAAAAAAAQAAAEIABAIAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Utilites\GameStates.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

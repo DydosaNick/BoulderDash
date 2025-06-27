@@ -2,36 +2,36 @@
 using BoulderDash.Core.GameObjects.Entities;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace BoulderDash.GUIApp.Render
 {
     public class GUITextures
     {
-        public Dictionary<Type, Brush> Textures { get; private set; }
-
-        public GUITextures()
+        public Dictionary<Type, Image> Textures = new()
         {
-            Textures = new Dictionary<Type, Brush>
-            {
-                { typeof(Player), Brushes.LimeGreen },
-                { typeof(Block), Brushes.MediumPurple },
-                { typeof(Air), Brushes.Black },
-                { typeof(Diamond), Brushes.Yellow },
-                { typeof(Rock), Brushes.Gray },
-                { typeof(Wall), Brushes.DarkSlateGray },
-                { typeof(Exit), Brushes.Cyan },
-                { typeof(Bomb), Brushes.Red }
-            };
-        }
+            { typeof(Player), Image.FromFile("./Images/Player.png") },
+            { typeof(Block), Image.FromFile("./Images/Block.png") },
+            { typeof(Air),  Image.FromFile("./Images/Air.png")},
+            { typeof(Diamond), Image.FromFile("./Images/Diamond.png")},
+            { typeof(Rock), Image.FromFile("./Images/Rock.png") },
+            { typeof(Wall), Image.FromFile("./Images/Wall.png") },
+            { typeof(Exit), Image.FromFile("./Images/Exit.png")},
+            { typeof(Bomb), Image.FromFile("./Images/Bomb.png")},
+        };
 
-        public Brush GetBrushForType(Type objectType)
+        public Image GetTexture(Type type)
         {
-            if (Textures.TryGetValue(objectType, out Brush brush))
+            if (Textures.ContainsKey(type))
             {
-                return brush;
+                return Textures[type];
             }
-            return Brushes.Fuchsia;
+            else
+            {
+                throw new ArgumentException($"Texture for type {type.Name} not found.");
+            }
         }
     }
 }

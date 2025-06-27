@@ -1,16 +1,13 @@
-using System;
-using System.Windows.Forms;
-
 namespace BoulderDash.GUIApp
 {
-    static class Program
+    internal static class Program
     {
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GameForm());
+            // see https://aka.ms/applicationconfiguration.
+            ApplicationConfiguration.Initialize();
+            Application.Run(new Form1());
         }
     }
 }

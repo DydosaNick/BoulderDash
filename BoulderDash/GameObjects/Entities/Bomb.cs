@@ -1,6 +1,5 @@
 ﻿using BoulderDash.Core.GameObjects.Cells;
 using BoulderDash.Core.Utilites;
-using BoulderDash.Core.Utilites.Interfaces;
 using BoulderDash.Core.World;
 using System;
 using System.Collections.Generic;
@@ -10,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BoulderDash.Core.GameObjects.Entities
 {
-    public class Bomb : Entity, IExplode
+    public class Bomb : Entity
     {
         public Bomb(int x, int y) : base(x, y)
         {

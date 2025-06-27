@@ -28,13 +28,24 @@ namespace BoulderDash.ConsoleApp.Input
             }
         }
             
-        public override string MenuInput(GameStates gameState)
+        public override string MenuInput()
         {
             Console.Clear();
 
-            Console.WriteLine(messages.MessagesDictionary[gameState]);
+            var (color, message) = messages.MessagesDictionary[GameStates.Menu];
 
-            return Console.ReadLine();
+            Console.ForegroundColor = color;
+            Console.WriteLine(message);
+            Console.ResetColor();
+
+            string input = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(input))
+            {
+                return "1";
+            }
+
+            return input;
         }
     }
 }

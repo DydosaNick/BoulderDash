@@ -20,9 +20,11 @@ namespace BoulderDash.Core.World
         public int Width { get; private set; }
         public int Height { get; private set; }
 
-        private string LevelString = "./Levels/";
+        private const string LevelString = "./Levels/";
 
         public bool playerFound = false;
+
+        public static int MaxDiamonds { get; set; } = 0;
 
         public int CurrentLevel { get; set; } = 1;
 
@@ -35,10 +37,9 @@ namespace BoulderDash.Core.World
             Map = new GameObject[width, height];
             PreviousMap = new GameObject[width, height];
         }
-
-        public string GetLevelString(string str)
+        public string GetLevelString(int number)
         {
-            return $"{LevelString}level{str}.txt";
+            return $"{LevelString}level{number}.txt";
         }
 
         private string GetCurrentLevelString()
@@ -46,10 +47,28 @@ namespace BoulderDash.Core.World
             return $"{LevelString}level{CurrentLevel}.txt";
         }
 
+        public void CheckMaxDiamonds()
+        {
+            int level = 1;
+            int maxDiamonds = 0;
+            while (File.Exists(GetLevelString(level)))
+            {
+                string[] lines = File.ReadAllLines(GetLevelString(level));
+                foreach (string line in lines)
+                {
+                    int count = line.Count(c => c == '*');
+                    maxDiamonds += count;
+                }
+                level++;
+            }
+
+            MaxDiamonds = maxDiamonds;
+        }
+
         public void CheckMaxLevel()
         {
             int maxLevel = 1;
-            while (File.Exists(GetLevelString($"{maxLevel}")))
+            while (File.Exists(GetLevelString(maxLevel)))
             {
                 maxLevel++;
             }
@@ -61,16 +80,9 @@ namespace BoulderDash.Core.World
         {
             playerControler.PlayerAction(key, gameWorld, gameStateConroler);
 
-            gameStateConroler.EvaluateGameStateActions(key);
+            gameStateConroler.EvaluateGameState(key);
 
             UpdateMap(gameStateConroler);
-        }
-
-        public void LoadLevel(int x)
-        {
-            CurrentLevel = x;
-            LoadCurrentLevel();
-            PreviousMap = null;
         }
 
         public void LoadNextLevel()
@@ -109,6 +121,7 @@ namespace BoulderDash.Core.World
                 }
             }
         }
+
         public GameObject CreateGameObject(char obj, int x, int y)
         {
             switch (obj)
@@ -170,6 +183,5 @@ namespace BoulderDash.Core.World
                 }
             }
         }
-
     }
 }

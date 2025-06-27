@@ -23,7 +23,7 @@ namespace BoulderDash.ConsoleApp.Input
                     { ConsoleKey.LeftArrow, Actions.MoveLeft },
                     { ConsoleKey.D, Actions.MoveRight },
                     { ConsoleKey.RightArrow, Actions.MoveRight },
-                    { ConsoleKey.Enter, Actions.Interact },
+                    { ConsoleKey.E, Actions.Interact },
                     { ConsoleKey.Escape, Actions.LeaveGame }
                 };
             }

@@ -9,6 +9,7 @@ namespace BoulderDash.Core.Utilites
 {
     public abstract class GameRender
     {
+        public abstract char Id { get; set; }
         public abstract void Render(GameWorld gameMap);
         public abstract void ShowMessage(GameStates gameStates);
     }

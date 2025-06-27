@@ -15,6 +15,8 @@ namespace BoulderDash.ConsoleApp.Render
 
         private bool isNeedToRewrite = false;
 
+        public override char Id { get ; set; } = 'C';
+
         public override void Render(GameWorld gameWorld)
         {
 
@@ -48,8 +50,6 @@ namespace BoulderDash.ConsoleApp.Render
             {
                 for (int y = 0; y < gameWorld.Height; y++)
                 {
-
-
                     if ((newCursorX <= windowControler.WindowWidth && newCursorY <= windowControler.WindowHeight) ||
                        gameWorld.PreviousMap == null || gameWorld.PreviousMap[x, y] != gameWorld.Map[x, y] || isNeedToRewrite)
                     {
@@ -73,6 +73,8 @@ namespace BoulderDash.ConsoleApp.Render
 
                 isNeedToRewrite = false;
             }
+
+            Thread.Sleep(20);
         }
 
         public override void ShowMessage(GameStates gameState)

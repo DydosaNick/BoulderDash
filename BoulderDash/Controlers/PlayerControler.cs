@@ -13,11 +13,11 @@ namespace BoulderDash.Core.Controlers
 {
     public class PlayerControler
     {
-        private int MaxTicsUnderDanger { get; set; } = 12;
+        private int MaxTicsUnderDanger { get; set; } = 20;
 
         private int CurrentTicsUnderDanger { get; set; } = 0;
 
-        private int InteeractDistance { get; set; } = 1;
+        private int InteractionRange { get; set; } = 1;
 
         public void PlayerAction(Actions key, GameWorld gameWorld, GameStateConroler gameStateConroler)
         {
@@ -55,9 +55,9 @@ namespace BoulderDash.Core.Controlers
 
         private void Interact(GameWorld gameWorld)
         {
-            for (int i = Player.CurrentPlayerPosition.X - InteeractDistance; i <= Player.CurrentPlayerPosition.X + InteeractDistance; i++)
+            for (int i = Player.CurrentPlayerPosition.X - InteractionRange; i <= Player.CurrentPlayerPosition.X + InteractionRange; i++)
             {
-                for (int j = Player.CurrentPlayerPosition.Y - InteeractDistance; j <= Player.CurrentPlayerPosition.Y + InteeractDistance; j++)
+                for (int j = Player.CurrentPlayerPosition.Y - InteractionRange; j <= Player.CurrentPlayerPosition.Y + InteractionRange; j++)
                 {
                     if (i < 0 || i >= gameWorld.Width || j < 0 || j >= gameWorld.Height)
                     {
@@ -122,7 +122,7 @@ namespace BoulderDash.Core.Controlers
                     }
                 } 
             }
-            else if (gameWorld.Map[newPlayerPosition.X, newPlayerPosition.Y].IsPlayerPassible)
+            else if (gameWorld.Map[newPlayerPosition.X, newPlayerPosition.Y].IsPassibleByPlayer)
             {
                 if (gameWorld.Map[newPlayerPosition.X, newPlayerPosition.Y] is Diamond)
                 {

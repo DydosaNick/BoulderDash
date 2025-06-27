@@ -11,7 +11,7 @@ namespace BoulderDash.Core.GameObjects.Cells
         public Air(int x, int y) : base(x, y)
         {
             IsPassible = true;
-            IsPlayerPassible = true;
+            IsPassibleByPlayer = true;
         }
 
     }

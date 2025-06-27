@@ -15,5 +15,6 @@ namespace BoulderDash.Core.Utilites
         Interact,
         LeaveGame,
         Nothing,
+        Pause,
     }
 }
